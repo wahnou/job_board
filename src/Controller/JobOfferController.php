@@ -35,6 +35,7 @@ class JobOfferController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $jobOffer->setCreatedAt(new \DateTimeImmutable());
             $jobOfferRepository->add($jobOffer, true);
 
             return $this->redirectToRoute('app_job_offer_index', [], Response::HTTP_SEE_OTHER);

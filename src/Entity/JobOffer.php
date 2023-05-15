@@ -6,6 +6,7 @@ use App\Repository\JobOfferRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=JobOfferRepository::class)
@@ -21,11 +22,23 @@ class JobOffer
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 50,
+     *      minMessage = "Job title must be at least {{ limit }} characters long",
+     *      maxMessage = "Job title cannot be longer than {{ limit }} characters"
+     * )
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = 10,
+     *      minMessage = "Job description must be at least {{ limit }} characters long",
+     * )
      */
     private $description;
 
