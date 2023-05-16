@@ -3,7 +3,7 @@
 {% block title %}JobOffer{% endblock %}
 
 {% block body %}
-    <h1>JobOffer</h1>
+    {# <h1>JobOffer</h1> #}
 
     <table class="table">
         <tbody>
@@ -27,7 +27,7 @@
                 <th>Tags</th>
                 <td>
                  {% for tag in job_offer.tags %}
-                    <li>{{ tag.name|e }}</li>
+                    <li><a href="/tag/{{ tag.id|e }}">{{ tag.name|e }}</a></li>
                 {% endfor %}
                 </td>
             </tr>

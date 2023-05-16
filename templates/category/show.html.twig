@@ -3,7 +3,7 @@
 {% block title %}Category{% endblock %}
 
 {% block body %}
-    <h1>Category</h1>
+    {# <h1>Category</h1> #}
 
     <table class="table">
         <tbody>
@@ -14,6 +14,14 @@
             <tr>
                 <th>Name</th>
                 <td>{{ category.name }}</td>
+            </tr>
+            <tr>
+                <th>Jobs</th>
+                <td>
+                {% for job in category.jobs %}
+                    <li><a href="/{{ job.id|e }}">{{ job.title|e }}</a></li>
+                {% endfor %}
+                </td>
             </tr>
         </tbody>
     </table>
