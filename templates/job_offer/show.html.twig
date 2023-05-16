@@ -23,6 +23,14 @@
                 <th>CreatedAt</th>
                 <td>{{ job_offer.createdAt ? job_offer.createdAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
+            <tr>
+                <th>Tags</th>
+                <td>
+                 {% for tag in job_offer.tags %}
+                    <li>{{ tag.name|e }}</li>
+                {% endfor %}
+                </td>
+            </tr>
         </tbody>
     </table>
 
