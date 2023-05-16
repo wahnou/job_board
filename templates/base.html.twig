@@ -18,6 +18,12 @@
     </head>
     <body>
         <div class="container mt-3">
+            {% for message in app.flashes('info') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            
             {% block body %}{% endblock %}
         </div>
     </body>

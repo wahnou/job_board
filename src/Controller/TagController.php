@@ -37,6 +37,11 @@ class TagController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $tagRepository->add($tag, true);
 
+            $this->addFlash(
+                'info',
+                'Tag added!'
+            );
+
             return $this->redirectToRoute('app_tag_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -66,6 +71,11 @@ class TagController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $tagRepository->add($tag, true);
+
+            $this->addFlash(
+                'info',
+                'Tag edited!'
+            );
 
             return $this->redirectToRoute('app_tag_index', [], Response::HTTP_SEE_OTHER);
         }

@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/job/offer")
+ * @Route("/")
  */
 class JobOfferController extends AbstractController
 {
@@ -37,6 +37,11 @@ class JobOfferController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $jobOffer->setCreatedAt(new \DateTimeImmutable());
             $jobOfferRepository->add($jobOffer, true);
+
+            $this->addFlash(
+                'info',
+                'Job added!'
+            );
 
             return $this->redirectToRoute('app_job_offer_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -67,6 +72,11 @@ class JobOfferController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $jobOfferRepository->add($jobOffer, true);
+
+            $this->addFlash(
+                'info',
+                'Job edited!'
+            );
 
             return $this->redirectToRoute('app_job_offer_index', [], Response::HTTP_SEE_OTHER);
         }
